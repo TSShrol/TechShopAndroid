@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Input Your Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Name" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/comp1"
+            tools:srcCompat="@drawable/comp1" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/aclonica"
+            android:rotation="-20"
+            android:text="@string/sale_shop"
+            android:textColor="@color/md_theme_light_error"
+            android:textSize="28sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="20dp"
+        android:text="Select Item"/>
+
+    <Spinner
+        android:id="@+id/spinnerProduct"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageSelectedProduct"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:src="@drawable/comp1"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+        <TextView
+            android:id="@+id/priceTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginStart="25dp"
+            android:text="Order Price"/>
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceTitleTextView"
+            android:layout_gravity="end"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:text="200.0"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/currencyTextView"
+            android:layout_below="@+id/priceTitleTextView"
+            android:layout_toRightOf="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_gravity="end"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            android:text="$"/>
+        <TextView
+            android:id="@+id/countTitleTextView"
+            android:layout_toRightOf="@+id/priceTitleTextView"
+            android:layout_marginStart="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Count"/>
+
+        <Button
+            android:id="@+id/minisButton"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/countTitleTextView"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/currencyTextView"
+            android:text="-"
+            android:textSize="24sp"
+            android:onClick="decreaseCount"/>
+
+        <TextView
+            android:id="@+id/countTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countTitleTextView"
+            android:layout_gravity="end"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/minisButton"
+
+            android:text="0"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/plusButton"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/countTitleTextView"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/countTextView"
+            android:onClick="increaseCount"
+            android:text="+"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:textSize="24sp" />
+
+</LinearLayout>
