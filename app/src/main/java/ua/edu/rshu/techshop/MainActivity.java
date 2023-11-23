@@ -2,14 +2,18 @@ package ua.edu.rshu.techshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,12 +25,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ArrayAdapter spinnerAdapter;
     HashMap selectedMapProduct;
     String selectProduct;
+    EditText userNameEditText;
     double price=0.0;
     // Double price=0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        userNameEditText=findViewById(R.id.editTextUserName);
         createSpinerProduct();
         createMapProduct();
     }
@@ -99,5 +105,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    public void addToCart(View view) {
+        Order order=new Order();
+        order.setUserName(userNameEditText.getText().toString());
+        order.setSelectedProduct(selectProduct);
+        order.setPriceByProduct(price);
+        order.setCountProduct(count);
+        Intent orderIntent=new Intent(MainActivity.this, OrderActivity.class);
+        orderIntent.putExtra("userName", order.getUserName());
+        Log.d("printUserName",""+order.getUserName());
+        orderIntent.putExtra("selectedProduct", order.getSelectedProduct());
+        Log.d("printselectedProduct",""+order.getSelectedProduct());
+        orderIntent.putExtra("countProduct", order.getCountProduct());
+        orderIntent.putExtra("priceByProduct", order.getPriceByProduct());
+//        startActivity(orderIntent);
+        if (order.getUserName().isEmpty()){
+            Toast.makeText(this, "Input your name, please!", Toast.LENGTH_LONG).show();
+        }else{
+            startActivity(orderIntent);
+        }
     }
 }
